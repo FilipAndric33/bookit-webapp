@@ -1,25 +1,14 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { fetchApartmentsV1 } from "../apartments/index";
 
 const Home = () => {
         const [apartments, setApartment] = useState([]);
         const navigate = useNavigate();
 
         useEffect(() => {
-            const fetchApartments = async () => {
-                try {
-                    const response = await fetch('http://localhost:4000/api/home');
-                    if (!response.ok) {
-                        throw new Error('error with the response');
-                    }
-                    const data = await response.json();
-                    setApartment(data);
-                } catch (err) {
-                    console.error("error fetching data: ", err);                
-                };
-            };
-
-        fetchApartments();
+            const fetchApartments = () => fetchApartmentsV1(setApartment);
+            fetchApartments();
         }, []);
 
         const handleView = (id) => {

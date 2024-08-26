@@ -2,6 +2,7 @@ import { useState, useEffect} from 'react';
 import Cookies from 'js-cookie';
 import { jwtDecode } from 'jwt-decode';
 import { Link } from "react-router-dom";
+import { fetchUserV1 } from '../user/index';
 
 const Profile = () => {
     const [user, setUser] = useState();
@@ -10,26 +11,10 @@ const Profile = () => {
         const token = Cookies.get('token');
         if(token) {
             const decoded = jwtDecode(token);
-
-        const fetchUser = async () => {
-            try {
-                const response = await fetch('http://localhost:4000/api/user', {
-                    method: "POST",
-                    headers: {"Content-Type" : "application/json"},
-                    body: JSON.stringify({ id: decoded.id })
-                });
-                if (!response.ok) {
-                    throw new Error('error with the response');
-                }
-                const data = await response.json();
-                setUser(data);
-            } catch (err) {
-                console.error(err);                
-            };
+            const fetchUser = async () => fetchUserV1(setUser, decoded.id);
+            
+        fetchUser();
         };
-
-    fetchUser();
-};
     }, []);
 
 

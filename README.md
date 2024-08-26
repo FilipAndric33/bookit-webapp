@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# MERN stack reservation app called bookit
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## A fully functional web application for reservations
 
-## Available Scripts
+This project was built as a portfolio. It is a web app that can be used to browse, view and resere apartments.
+There is a registration system including authorization and authentification and based on wether the user is logged in
+or not he is provided with different functionalities.
 
-In the project directory, you can run:
+## Technology stack
 
-### `npm start`
+### Front end
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+React.js used for building and managing the user interface.
+React router from react-router-dom library for routing.
+Date-fns and react-datepicker for date handling.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Back end
 
-### `npm test`
+Node.js and Express.js for server side logic.
+MongoDB and Mongoose for database creation and managment.
+JsonWebToken for user authentification and authorization.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Setup and installation 
 
-### `npm run build`
+### Prerequisites
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Node.js and npm installed.
+MongoDB cluster set up and running.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Clone the repo: git clone https://github.com/yourusername/bookit.git
+                cd bookit
 
-### `npm run eject`
+### Install dependencies:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+npm install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Set up environment variables 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Create a .env file with variables from .env.example (use your custom values)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Run the application 
 
-## Learn More
+open two terminals in the root directory. 
+on the first one run: npm run start 
+This will start the client.
+in the second one run: npm run dev
+this will start the server.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The application will be running on localhost:3000.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Usage
 
-### Code Splitting
+### Browsing apartments
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+On the initial homepage there are apartments that can be browsed. Click on the view button to see the details.
 
-### Analyzing the Bundle Size
+### Making reservations 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+By clicking view, there is a date picker callendar on which you can pick either one date or multiple dates in a row.
+The total price is written above. The starting price is one day rental price.
 
-### Making a Progressive Web App
+### Registration and log in
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+By opening the register form you can create an account. After account creation you can press the login option in 
+the navbar which will lead to a second form. By typing in the username and password you will log in.
 
-### Advanced Configuration
+### Posting property
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+in the navbar there is an option to view profile info. After opening you will have a button that leads to the 
+appartment adding form. The same can be done directly from the navbar after logging in. 

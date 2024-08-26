@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { eachDayOfInterval, isSameDay } from 'date-fns';
+import { eachDayOfInterval } from 'date-fns';
+import { fetchApartmentV1, fetchPhoneNumberV1, handleDateChangeV1, getAvailableDatesV1, isDateAvailableV1, handleRemoveDatesV1, calculatePriceV1 } from '../apartments/index';
 
 const ApartmentDetails = () => {
     const { id } = useParams();
@@ -13,81 +14,22 @@ const ApartmentDetails = () => {
     const [endDate, setEndDate] = useState(null);
 
     useEffect(() => {
-        const fetchApartment = async () => {
-            try {
-                const response = await fetch("http://localhost:4000/api/apartmentDetails", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ id: id })
-                });
-                if (!response.ok) {
-                    throw new Error("Error with the response");
-                } 
-                const data = await response.json();
-                setApartment(data);
-            } catch (err) {
-                console.log("Error fetching apartment", err);
-            }
-        };
-
+        const fetchApartment = () => fetchApartmentV1(id, setApartment);
         fetchApartment();
     }, [id]);
 
     useEffect(() => {
         if(apartment) {
         const ownerId = apartment.owner;
-        
-        const fetchPhoneNumber = async () => {
-            try {
-                const response = await fetch('http://localhost:4000/api/ownerNumber', {
-                    method: "POST",
-                    headers: {"Content-Type" : "application/json"},
-                    body: JSON.stringify({ id: ownerId })
-                });
-                if(!response.ok) {
-                    throw new Error('error getting a response');
-                } 
-                    const data = await response.json();
-                    setNumber(data)
-            } catch(err) {
-                console.log("error fetching number: ",err);
-            }
-        };
-
+        const fetchPhoneNumber = () => fetchPhoneNumberV1(ownerId, setNumber);
         fetchPhoneNumber();
         };
     }, [apartment]);
 
-    const handleDateChange = (date) => {
-        if(Array.isArray(date)) {
-            const [start, end] = date;
-            setStartDate(start);
-            setEndDate(end);
-        } else {
-            setStartDate(date);
-            setEndDate(null);
-        }
-    };
-
-    const getAvailableDates = () => {
-        if(!apartment || !apartment.availability) return [];
-
-        return apartment.availability.map(dateStr => {
-            const date = new Date(dateStr);
-            date.setUTCHours(0, 0, 0, 0);
-            return date;
-        });
-    };
-
+    const handleDateChange = (date) => handleDateChangeV1(date, setStartDate, setEndDate);
+    const getAvailableDates = () => getAvailableDatesV1(apartment);
     const availableDates = getAvailableDates();
-
-    const isDateAvailable = (date) => {
-        const normalizedDate = new Date(date);
-        normalizedDate.setUTCHours(0, 0, 0, 0);
-
-        return availableDates.some(availableDate => isSameDay(normalizedDate, availableDate));
-    };
-
+    const isDateAvailable = (date) => isDateAvailableV1(date, availableDates);
     const filterDate = (date) => {
         return isDateAvailable(date);
     };
@@ -104,42 +46,9 @@ const ApartmentDetails = () => {
         };
     }, [startDate, endDate]);
 
-    const handlesubmit = (e) => {
-        e.preventDefault();
-
-        if(selectedDate.length > 0) {
-
-            const removeDates = async () => {
-                try {
-                    const response = await fetch('http://localhost:4000/api/removeDates', {
-                        method: "POST",
-                        headers: {"Content-Type" : "application/json"},
-                        body: JSON.stringify({ dates: selectedDate, id: apartment._id })
-                    });
-                    if(!response.ok) {
-                        throw new Error("error getting a response");
-                    };
-                    } catch(err) {
-                        console.log(err)
-                    };
-            };
-            removeDates();
-        };
-    };
-
-    const calculatePrice = () => {
-        let price;
-
-        if(selectedDate.length === 1) {
-            price = apartment.startPrice;
-        } else if (selectedDate.length > 1 && selectedDate.length < 5) {
-            price = apartment.startPrice * (0.8 * selectedDate.length);
-        } else {
-            price = apartment.startPrice * (0.7 * selectedDate.length);
-        };
-        return price.toFixed(2);
-    };
-
+    const handleSubmit = (e) => handleRemoveDatesV1(e, selectedDate, apartment);
+    const calculatePrice = () => calculatePriceV1(apartment, selectedDate);
+    
     return (
         <div className="details">
             <h2 className="apartmentDetailsTitle">Apartment Details:</h2>
@@ -179,7 +88,7 @@ const ApartmentDetails = () => {
                         ) : (
                             <h2 className='startingPrice'>Starting price: {apartment.startPrice}€</h2>
                         )}
-                        <form onSubmit={handlesubmit}>
+                        <form onSubmit={handleSubmit}>
                             <h3>Select a date:</h3>
                             <DatePicker
                                 selected={startDate} 

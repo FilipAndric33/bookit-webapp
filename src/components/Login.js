@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
+import { handleChangeUserV1, handleSubmitLoginV1 } from '../user/index';
 
 const Login = () => {
     const [user, setUser] = useState({
@@ -9,35 +9,8 @@ const Login = () => {
     });
 
     const navigate = useNavigate();
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-
-        setUser({
-            ...user,
-            [name] : value,
-        });
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        fetch('http://localhost:4000/api/login', {
-            method: "POST", 
-            headers: {"Content-Type" : "application/json"},
-            body: JSON.stringify(user)
-        }).then(response => response.json())
-        .then(data => {
-            console.log(data);
-            if (data.token) {
-                Cookies.set('token', data.token, { expires: 3 });
-                navigate('/');
-            }
-            else {
-                alert("login failed.")
-            };
-        });
-    };
+    const handleChange = (e) => handleChangeUserV1(e, user, setUser);
+    const handleSubmit = (e) => handleSubmitLoginV1(e, user, navigate);
 
     return (
         <div className="login">

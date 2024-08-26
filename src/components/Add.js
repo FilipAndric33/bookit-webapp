@@ -1,10 +1,11 @@
-import React, { useEffect, useCallback, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import Cookies from 'js-cookie';
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { useOnDropV1, handleChangeApartmentsV1, handleDateChangeV1, availabilitySetterV1, handleSubmitApartmentsV1 } from '../apartments/index';
 
 const Dropzone = () => {
     const navigate = useNavigate();
@@ -33,16 +34,7 @@ const Dropzone = () => {
         const [endDate, setEndDate] = useState(null);
 
 
-        const onDrop = useCallback((acceptedFiles)=> {
-            if(acceptedFiles?.length) {
-                setFiles(previousFiles => [
-                    ...previousFiles,
-                    ...acceptedFiles.map(file => 
-                        Object.assign(file, { preview: URL.createObjectURL(file) })
-                    )
-                ]);
-            }
-        }, []);
+        const onDrop = useOnDropV1(setFiles);
 
         const { getRootProps, getInputProps, isDragActive } = useDropzone({onDrop,
             accept:{ "image/*" : [] },
@@ -50,98 +42,17 @@ const Dropzone = () => {
         });
 
 
-    const handleChange = (e) => {
-        const { name, value, type, checked } = e.target;
-            let tick;
-            if (type === "checkbox") {
-                if(checked){
-                    tick = true;
-                } else tick = false;
-            }
-            setPropertyData((prevData) => ({
-                ...prevData,
-                [name]: type === "checkbox" ? tick : value,
-        }));
-    };
-
-    const handleDateChange = (date) => {
-        if(Array.isArray(date)) {
-            const [start, end] = date;
-            setStartDate(start);
-            setEndDate(end);
-        } else {
-            setStartDate(date);
-            setEndDate(null);
-        }
-    };
+    const handleChange = (e) => handleChangeApartmentsV1(e, setPropertyData);
+    const handleDateChange = (e) => handleDateChangeV1(e, setStartDate, setEndDate);
 
     useEffect(() => {
         if (startDate && endDate) {
-            const availabilitySetter = () => {
-                let dateArray = [];
-                let currentDate = new Date(startDate);
-
-                while (currentDate <= endDate) {
-                    dateArray.push(new Date(currentDate));
-                    currentDate.setDate(currentDate.getDate() + 1);
-                }
-
-                setPropertyData(prevData => ({
-                    ...prevData,
-                    availability: dateArray
-                }));
-            };
-
+            const availabilitySetter = () => availabilitySetterV1(startDate, endDate, setPropertyData);
             availabilitySetter();
         }
     }, [startDate, endDate]);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault(); 
-
-        if (!startDate || !endDate) {
-            alert('Please select availability dates.');
-            return;
-        };
-          
-        const formData = new FormData();        
-        formData.append('apartmentSize', propertyData.apartmentSize);
-        formData.append('airConditioning', propertyData.airConditioning);
-        formData.append('heating', propertyData.heating);
-        formData.append('balcony', propertyData.balcony);
-        formData.append('parking', propertyData.parking);
-        formData.append('freeWifi', propertyData.freeWifi);
-        formData.append('privateBathroom', propertyData.privateBathroom);
-        formData.append('smoking', propertyData.smoking);
-        formData.append('kitchen', propertyData.kitchen);
-        formData.append('description', propertyData.description);
-        formData.append('owner', propertyData.owner);
-        formData.append('startPrice', propertyData.startPrice);
-        formData.append('availability', JSON.stringify(propertyData.availability));
-
-        files.forEach((file) => {
-            formData.append('images', file);
-        });
-
-        for (let pair of formData.entries()) {
-            console.log(pair[0], pair[1]);
-        }
-
-    try {
-        const response = await fetch('http://localhost:4000/api/add', {
-            method: 'POST',
-            body: formData
-        });
-        if (response.ok) {
-            alert('Property submitted successfully');
-            navigate('/profile');
-        } else {
-            console.error('Error submitting property');
-        }
-    }catch (err) {
-        console.error('Error submitting property:', err);
-    };
-    };
+    const handleSubmit = (e) => handleSubmitApartmentsV1(e, startDate, endDate, propertyData, files, navigate);
 
     return (
         <form onSubmit={handleSubmit}>
