@@ -1,0 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+* {
+  margin: 0;
+  font-family: "Oswald";
+  color: rgb(49, 49, 46);
+}
+
+.navbar {
+  background-color: rgb(148, 172, 13);
+  color: rgb(247, 247, 198);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  width: auto;
+  margin: 0 auto;
+  border-bottom: 1px solid rgb(38, 139, 38);
+}
+
+.navbar h1 {
+  pointer-events: none;
+  color: rgb(247, 247, 198);
+}
+
+.navbar .links {
+  margin-left: auto;
+  color: rgb(247, 247, 198);
+}
+
+.navbar a {
+  margin-left: 16px;
+  text-decoration: none;
+  padding: 6px;
+  color: rgb(247, 247, 198);
+}
+
+@keyframes colorChange{
+  0% { color: rgb(247, 247, 198)}
+  100% {color: rgb(62, 65, 23);}
+  }
+
+.navbar a:hover {
+  animation: colorChange 300ms;
+  animation-fill-mode: forwards;
+}
+
+h2 {
+  color: black;
+}
+
+.register, .login {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+label {
+  text-align: left;
+  display: block;
+  color: rgb(49, 49, 46);
+}
+
+input {
+  color: rgb(49, 49, 46);
+  width: 100%;
+  padding: 6px 10px;
+  margin: 10px 0;
+  border: 1px solid rgb(49, 49, 46);
+  border-radius: 20px;
+  box-sizing: border-box;
+  display: block;
+}
+
+@keyframes backgroundChange {
+  0% {
+    background-color: rgb(148, 172, 13)
+  }
+  100% {
+    background-color: rgb(241, 241, 156);
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+}
+
+button {
+  background: rgb(148, 172, 13);
+  color: rgb(247, 247, 198);
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 300ms;
+}
+
+button:hover {
+  animation: colorChange 300ms forwards, backgroundChange 300ms forwards;
+  animation-direction: alternate;
+}
+
+.notFound {
+  color: rgb(49, 49, 46);
+} 
+
+.content {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  color: rgb(49, 49, 46);
+}
+
+.apartment {
+  margin: 20px 0px;
+  border: 1.5px solid rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  border-radius: 15px;
+  display: flex;
+  transition: box-shadow 0.3s ease;
+}
+
+.apartment:hover {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.apartment img {
+  width: 200px;
+  height: 200px;
+  border: 1.5px solid rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+.homeApartment {
+  width: 100%;
+  display: flex;
+  margin-top: auto;
+  flex-direction: column;
+} 
+
+.homeApartment h3 {
+  align-self: flex-end;
+}
+
+.homeApartment button {
+  width: 25%;
+  align-self: flex-end;
+}
+
+.dropzoneForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 70%; /* You can adjust this value */
+  margin: 0 auto;
+  padding: 20px;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+form > div {
+  margin-bottom: 15px;
+  width: 100%; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form h3, form h4, form label {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+form input[type="number"],
+form textarea {
+  width: 80%; 
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.addedImages ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.addedImages li {
+  margin-right: 10px;
+}
+
+.addedImages img {
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.details {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.apartmentDetailsTitle {
+  text-align: left;
+  width: 100%;
+  text-decoration: underline;
+  margin-bottom: 20px;
+}
+
+.apartmentDetailsImages {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  gap: 10px;
+  margin-bottom: 50px;
+}
+
+.apartmentImage {
+  max-width: 230px;
+  max-height: 230px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.apartmentDetailsInfo {
+  width: 600px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px; 
+}
+
+.apartmentDetailsLeft {
+  flex: 1;
+  max-width: 50%;
+}
+
+.apartmentDescription {
+  border: 1px solid #ccc;
+  padding: 10px;
+  min-height: 50px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.apartmentDetailsRight {
+  width: 50%;
+  text-align: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+.totalPrice, .startingPrice {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.userInfo {
+  max-width: 600px;
+  display: flex;
+  align-items: center;
+}
+
+.profileInformationText {
+  margin-bottom: 50px;
+}
+
+.profileButton {
+  margin-left: auto;
+}
