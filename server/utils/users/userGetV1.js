@@ -1,7 +1,7 @@
 const User = require('../../models/Users');
 
 const userGetV1 = (async (req, res) => {
-    let {id} = req.body;
+    let id = req.body.id;
 
     try {
         let user = await User.findById(id);

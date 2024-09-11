@@ -6,8 +6,13 @@ const mongoose = require('mongoose');
 const routes = require('./routes/routes');
 const path = require('path');
 
+
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
-app.use(cors());
+app.use(cors({
+    origin: "http://localhost:3000",
+    credentials: true
+}));
+
 app.use(express.json());
 
 const connectDB = async () => {

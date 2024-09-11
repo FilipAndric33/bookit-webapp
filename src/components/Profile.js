@@ -11,7 +11,7 @@ const Profile = () => {
         const token = Cookies.get('token');
         if(token) {
             const decoded = jwtDecode(token);
-            const fetchUser = async () => fetchUserV1(setUser, decoded.id);
+            const fetchUser = async () => fetchUserV1(setUser, decoded);
             
         fetchUser();
         };
