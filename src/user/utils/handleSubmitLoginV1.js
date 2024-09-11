@@ -6,17 +6,21 @@ const handleSubmitLoginV1 = (e, user, navigate) => {
     fetch('http://localhost:4000/api/login', {
         method: "POST", 
         headers: {"Content-Type" : "application/json"},
+        credentials: "include",
         body: JSON.stringify(user)
-    }).then(response => response.json())
-    .then(data => {
-        console.log(data);
-        if (data.token) {
-            Cookies.set('token', data.token, { expires: 3 });
+    }).then(response => { if(response.ok) {
+        return response.json().then(data => {
+            const token = data;
+            Cookies.set('token', token, { expires: 3});
             navigate('/');
-        }
-        else {
-            alert("login failed.")
-        };
+        });
+            } else {
+                return response.json().then(data => {
+                alert(data.message || "login failed");
+            });
+    }}).catch(error => {
+        console.error("login failed. ", error);
+        alert("an error occurred during login. Try again later.");
     });
 };
 

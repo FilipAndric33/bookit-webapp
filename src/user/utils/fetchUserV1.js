@@ -1,9 +1,9 @@
-const fetchUserV1 = async (setUser, id) => {
+const fetchUserV1 = async (setUser, decoded) => {
     try {
         const response = await fetch('http://localhost:4000/api/user', {
             method: "POST",
             headers: {"Content-Type" : "application/json"},
-            body: JSON.stringify({ id: id })
+            body: JSON.stringify(decoded)
         });
         if (!response.ok) {
             throw new Error('error with the response');

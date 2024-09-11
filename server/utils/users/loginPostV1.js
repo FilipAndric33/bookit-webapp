@@ -21,7 +21,7 @@ const loginPostV1 = (async (req, res) => {
         };
 
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "3h" });
-        return res.json({ token });
+        res.status(200).json(token);
     } catch(err) {
         res.status(500).json({ message: "server side error while logging in." });
     }

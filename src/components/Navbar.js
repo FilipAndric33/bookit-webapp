@@ -3,11 +3,15 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-    const navigate = useNavigate();
-    const token = Cookies.get('token');
+    let token;
 
+    if(Cookies.get('token')) 
+        token = Cookies.get('token')
+    
+
+    const navigate = useNavigate();
     const handleLogout = () => {
-        Cookies.remove("token");
+        Cookies.remove('token');
         navigate('/');
     };
 
