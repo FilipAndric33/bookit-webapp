@@ -12,9 +12,36 @@
   padding: 20px;
   display: flex;
   align-items: center;
+  justify-content: center;
   width: auto;
   margin: 0 auto;
   border-bottom: 1px solid rgb(38, 139, 38);
+}
+
+.searchbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.input-row {
+  width: auto;
+  display: flex;
+  align-items: center;
+  margin: 0px 20px;
+}
+
+.location-input-search, .date-input-search, .guest-input-search {
+  width: 170px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.price-range-search {
+  width: 500px;
+  margin: 0px 30px;
 }
 
 .navbar h1 {
@@ -101,10 +128,17 @@ button:hover {
 } 
 
 .content {
-  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 100%;
   margin: 40px auto;
   padding: 20px;
   color: rgb(49, 49, 46);
+}
+
+.apartments {
+  width: 80%;
 }
 
 .apartment {

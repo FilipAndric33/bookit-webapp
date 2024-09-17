@@ -1,8 +1,11 @@
 const Apartment = require('../../models/Apartments');
+const User = require('../../models/Users');
 
 const addV1 = (async (req, res) => {
     try {
         const{
+            location,
+            guests,
             apartmentSize,
             airConditioning,
             heating,
@@ -22,6 +25,8 @@ const addV1 = (async (req, res) => {
         const images = req.files.map(file => (file.path));;
 
         const apartment = new Apartment({
+            location,
+            guests,
             apartmentSize: parseFloat(apartmentSize),
             airConditioning: airConditioning === "false",
             heating: heating === "false",

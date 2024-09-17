@@ -12,5 +12,7 @@ router.post('/add', authenticate,  upload.array('images', 10), controller.add);
 router.post('/apartmentDetails', controller.apartmentDetails);
 router.post('/ownerNumber', controller.ownerNumber);
 router.post('/removeDates', controller.removeDates);
+router.get('/apartments', controller.locateApartments);
+router.get('/availability', controller.fetchAvailability);
 
-module.exports= router;
+module.exports = router;

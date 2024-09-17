@@ -5,7 +5,15 @@ const apartmentSchema = new mongoose.Schema({
         type: [ String ],
         required: true
     },
+    location: {
+        type: String,
+        required: true
+    },
     apartmentSize: {
+        type: Number,
+        required: true
+    },
+    guests: {
         type: Number,
         required: true
     },

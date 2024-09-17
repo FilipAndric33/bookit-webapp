@@ -7,18 +7,25 @@ import NotFound from './components/404';
 import Profile from './components/Profile';
 import Add from './components/Add';
 import ApartmentDetails from './components/ApartmentDetails';
+import SearchBar from './components/SearchBar';
+import { useState } from 'react';
 
 
 function App() {
-
+  const [locatedApartments, setLocatedApartments] = useState([]);
 
   return (
     <Router>
       <div className="App"> 
-        <Navbar />
+        <Navbar/>
         <div className='content'>
         <Routes>
-          <Route exact path="/" element={<Home />} />
+          <Route exact path="/" element={
+            <>
+            <SearchBar setLocatedApartments={setLocatedApartments} />
+            <Home locatedApartments={locatedApartments} />
+            </>
+          } />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />}/>

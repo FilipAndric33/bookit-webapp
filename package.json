@@ -27,7 +27,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test:client": "react-scripts test",
+    "test:server": "jest",
     "eject": "react-scripts eject",
     "dev": "nodemon server/server.js"
   },

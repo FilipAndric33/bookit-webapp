@@ -8,6 +8,8 @@ const handleSubmitApartmentsV1 = async (e, startDate, endDate, propertyData, fil
       
     const formData = new FormData();        
     formData.append('apartmentSize', propertyData.apartmentSize);
+    formData.append('location', propertyData.location);
+    formData.append('guests', propertyData.guests);
     formData.append('airConditioning', propertyData.airConditioning);
     formData.append('heating', propertyData.heating);
     formData.append('balcony', propertyData.balcony);
@@ -24,10 +26,6 @@ const handleSubmitApartmentsV1 = async (e, startDate, endDate, propertyData, fil
     files.forEach((file) => {
         formData.append('images', file);
     });
-
-    for (let pair of formData.entries()) {
-        console.log(pair[0], pair[1]);
-    }
 
 try {
     const response = await fetch('http://localhost:4000/api/add', {

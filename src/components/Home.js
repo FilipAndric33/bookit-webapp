@@ -1,25 +1,32 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { fetchApartmentsV1 } from "../apartments/index";
+import { fetchApartmentsV1 } from "../apartments/index";  
 
-const Home = () => {
-        const [apartments, setApartment] = useState([]);
+const Home = ({ locatedApartments }) => {
+        const [apartments, setApartments] = useState([]);
         const navigate = useNavigate();
 
         useEffect(() => {
-            const fetchApartments = () => fetchApartmentsV1(setApartment);
+            const fetchApartments = () => fetchApartmentsV1(setApartments);
             fetchApartments();
         }, []);
+
 
         const handleView = (id) => {
             navigate(`/apartment/${id}`);
         };
 
+        useEffect(() => {
+            if(locatedApartments.length > 0) 
+                setApartments(locatedApartments);
+        }, [locatedApartments]);
+
         return (  
             <div className="apartments">
+
                     {apartments.map((apartment, apartmentIndex) => (
                         <div className="apartment" key={apartmentIndex}>
-                            {apartment.images.length > 0 && (
+                            {apartment.images && apartment.images.length > 0 && (
                                  <div>
                                     <img 
                                     src={`http://localhost:4000/${apartment.images[0]}`}

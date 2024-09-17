@@ -71,6 +71,8 @@ const ApartmentDetails = () => {
                 <div className="apartmentDetailsInfo">
                     <div className="apartmentDetailsLeft">
                         <p>Size: {apartment.apartmentSize}m²</p>
+                        <p>Location: {apartment.location}</p>
+                        <p>Guests: {apartment.guests}</p>
                         <p>Air Conditioning: {apartment.airConditioning ? 'Yes' : 'No'}</p>
                         <p>Heating: {apartment.heating ? 'Yes' : 'No'}</p>
                         <p>Balcony: {apartment.balcony ? 'Yes' : 'No'}</p>

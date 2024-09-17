@@ -15,6 +15,8 @@ const Dropzone = () => {
 
     const [propertyData, setPropertyData] = useState({
         images: [],
+        location: "",
+        guests: "",
         apartmentSize: "",
         description: "",
         airConditioning: false,
@@ -78,10 +80,20 @@ const Dropzone = () => {
                 </ul>
             </div>
         </div>
+
+        <div>
+            <label>Apartment location:</label>
+            <input type="string" name="location" value={propertyData.location} onChange={handleChange} required />
+        </div>
       
         <div>
             <label>Apartment size (sqm):</label>
             <input type="number" name="apartmentSize" value={propertyData.apartmentSize} onChange={handleChange} required />
+        </div>
+
+        <div>
+            <label>Number of guests:</label>
+            <input type="number" name="guests" value={propertyData.guests} onChange={handleChange} required />
         </div>
 
         <div>

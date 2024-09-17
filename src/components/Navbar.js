@@ -18,6 +18,7 @@ const Navbar = () => {
     return ( 
         <nav className="navbar">
             <h1>BookIT.com</h1>
+
             <div className="links">
                     {token ? (
                         <>

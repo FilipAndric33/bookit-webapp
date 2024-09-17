@@ -10,6 +10,9 @@ import isDateAvailableV1 from "./utils/isDateAvailableV1";
 import handleRemoveDatesV1 from "./utils/handleRemoveDatesV1";
 import calculatePriceV1 from "./utils/calculatePriceV1";
 import fetchApartmentsV1 from "./utils/fetchApartmentsV1.js";
+import handleSearchV1 from "./utils/handleSearchV1.js";
+import fetchAvailabilityV1 from "./utils/fetchAvailabilityV1.js";
+import handleLocationChangeV1 from"./utils/handleLocationChangeV1";
  
 export {
     useOnDropV1,
@@ -23,5 +26,8 @@ export {
     isDateAvailableV1,
     handleRemoveDatesV1,
     calculatePriceV1,
-    fetchApartmentsV1
+    fetchApartmentsV1,
+    handleSearchV1,
+    fetchAvailabilityV1,
+    handleLocationChangeV1
 }
