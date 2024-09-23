@@ -2,7 +2,7 @@
 
 ## A fully functional web application for reservations
 
-This project was built as a portfolio. It is a web app that can be used to browse, view and resere apartments.
+This project was built as a portfolio. It is a web app that can be used to browse, view and reserve apartments.
 There is a registration system including authorization and authentification and based on wether the user is logged in
 or not he is provided with different functionalities.
 
@@ -29,7 +29,7 @@ MongoDB cluster set up and running.
 
 ### Installation
 
-Clone the repo: git clone https://github.com/yourusername/bookit.git
+Clone the repo: git clone https://github.com/FilipAndric33/bookit-webapp
                 cd bookit
 
 ### Install dependencies:
@@ -44,9 +44,9 @@ Create a .env file with variables from .env.example (use your custom values)
 
 open two terminals in the root directory. 
 on the first one run: npm run start 
-This will start the client.
+-This will start the client.
 in the second one run: npm run dev
-this will start the server.
+-This will start the server.
 
 The application will be running on localhost:3000.
 
@@ -54,7 +54,7 @@ The application will be running on localhost:3000.
 
 ### Browsing apartments
 
-On the initial homepage there are apartments that can be browsed. Click on the view button to see the details.
+On the initial home page there are apartments that can be browsed. Click on the view button to see the details.
 
 ### Making reservations 
 
