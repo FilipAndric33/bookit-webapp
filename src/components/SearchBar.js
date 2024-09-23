@@ -60,7 +60,7 @@ const SearchBar = ({ setLocatedApartments }) => {
         <>
           <div className="searchbar">
             <div className="input-row">
-                  <div className='location-input-search' role='textbox'>
+                  <div className='location-input-search'>
                     <input
                       type='text'
                       name='location'
@@ -87,7 +87,7 @@ const SearchBar = ({ setLocatedApartments }) => {
                     />
                   </div>
                   
-                  <div className='guest-input-search' role='combobox'>
+                  <div className='guest-input-search'>
                     <select name="availableGuests" value={guests} onChange={handleGuestsChange}>
                       <option value="" disabled hidden>How many guests?</option>
                       {availableGuests.length > 0 && availableGuests.map((guest, guestIndex) => (
@@ -96,7 +96,7 @@ const SearchBar = ({ setLocatedApartments }) => {
                     </select>
                   </div>
 
-                    <div className="price-range-search" role='slider'>
+                    <div className="price-range-search">
                         <label>Put in your price range:</label>
                         <input 
                           type='range'

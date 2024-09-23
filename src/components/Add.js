@@ -101,44 +101,50 @@ const Dropzone = () => {
             <input type="number" name="startPrice" value={propertyData.startPrice} onChange={handleChange} required />
         </div>
 
-        <div>
-            <label>Air Conditioning:</label>
-            <input type="checkbox" name="airConditioning" checked={propertyData.airConditioning} onChange={handleChange} />
-        </div>
+        <div className="checkboxes">
+            <div className="checkbox-top">
+                <div>
+                    <label>Air Conditioning:</label>
+                    <input type="checkbox" className="grid-item" name="airConditioning" checked={propertyData.airConditioning} onChange={handleChange} />
+                </div>
 
-        <div>
-            <label>Heating:</label>
-            <input type="checkbox" name="heating" checked={propertyData.heating} onChange={handleChange} />
-        </div>
+                <div>
+                    <label>Heating:</label>
+                    <input type="checkbox" className="grid-item" name="heating" checked={propertyData.heating} onChange={handleChange} />
+                </div>
 
-        <div>
-            <label>Balcony:</label>
-            <input type="checkbox" name="balcony" checked={propertyData.balcony} onChange={handleChange} />
-        </div>
+                <div>
+                    <label>Balcony:</label>
+                    <input type="checkbox" className="grid-item" name="balcony" checked={propertyData.balcony} onChange={handleChange} />
+                </div>
 
-        <div>
-            <label>Parking:</label>
-            <input type="checkbox" name="parking" checked={propertyData.parking} onChange={handleChange} />
-        </div>
+                <div>
+                    <label>Parking:</label>
+                    <input type="checkbox" className="grid-item" name="parking" checked={propertyData.parking} onChange={handleChange} />
+                </div>
+            </div>
+        
+        <div className="checkbox-bottom">
+            <div>
+                <label>Free WiFi:</label>
+                <input type="checkbox" className="grid-item" name="freeWifi" checked={propertyData.freeWifi} onChange={handleChange} />
+            </div>
 
-        <div>
-            <label>Free WiFi:</label>
-            <input type="checkbox" name="freeWifi" checked={propertyData.freeWifi} onChange={handleChange} />
-        </div>
+            <div>
+                <label>Private Bathroom:</label>
+                <input type="checkbox" className="grid-item" name="privateBathroom" checked={propertyData.privateBathroom} onChange={handleChange} />
+            </div>
 
-        <div>
-            <label>Private Bathroom:</label>
-            <input type="checkbox" name="privateBathroom" checked={propertyData.privateBathroom} onChange={handleChange} />
-        </div>
+            <div>
+                <label>Smoking:</label>
+                <input type="checkbox" className="grid-item" name="smoking" checked={propertyData.smoking} onChange={handleChange} />
+            </div>
 
-        <div>
-            <label>Smoking:</label>
-            <input type="checkbox" name="smoking" checked={propertyData.smoking} onChange={handleChange} />
+            <div>
+                <label>Kitchen:</label>
+                <input type="checkbox" className="grid-item" name="kitchen" checked={propertyData.kitchen} onChange={handleChange} />
+            </div>
         </div>
-
-        <div>
-            <label>Kitchen:</label>
-            <input type="checkbox" name="kitchen" checked={propertyData.kitchen} onChange={handleChange} />
         </div>
 
         <div>

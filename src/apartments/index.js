@@ -13,6 +13,7 @@ import fetchApartmentsV1 from "./utils/fetchApartmentsV1.js";
 import handleSearchV1 from "./utils/handleSearchV1.js";
 import fetchAvailabilityV1 from "./utils/fetchAvailabilityV1.js";
 import handleLocationChangeV1 from"./utils/handleLocationChangeV1";
+import deleteApartmentV1 from "./utils/deleteApartmentV1.js";
  
 export {
     useOnDropV1,
@@ -29,5 +30,6 @@ export {
     fetchApartmentsV1,
     handleSearchV1,
     fetchAvailabilityV1,
-    handleLocationChangeV1
+    handleLocationChangeV1,
+    deleteApartmentV1
 }

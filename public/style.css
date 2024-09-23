@@ -6,6 +6,11 @@
   color: rgb(49, 49, 46);
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 .navbar {
   background-color: rgb(148, 172, 13);
   color: rgb(247, 247, 198);
@@ -100,7 +105,7 @@ input {
 
 @keyframes backgroundChange {
   0% {
-    background-color: rgb(148, 172, 13)
+    background-color: rgb(148, 172, 13);
   }
   100% {
     background-color: rgb(241, 241, 156);
@@ -127,18 +132,9 @@ button:hover {
   color: rgb(49, 49, 46);
 } 
 
-.content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 100%;
-  margin: 40px auto;
-  padding: 20px;
-  color: rgb(49, 49, 46);
-}
-
 .apartments {
   width: 80%;
+  margin: 20px 10%;
 }
 
 .apartment {
@@ -188,7 +184,7 @@ form {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 70%; /* You can adjust this value */
+  width: 40%;
   margin: 0 auto;
   padding: 20px;
   border: 2px solid rgba(0, 0, 0, 0.5);
@@ -300,9 +296,10 @@ form textarea {
 }
 
 .userInfo {
-  max-width: 600px;
+  width: 50%;
   display: flex;
   align-items: center;
+  margin: 0 25%;
 }
 
 .profileInformationText {
@@ -311,4 +308,70 @@ form textarea {
 
 .profileButton {
   margin-left: auto;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  margin: 5px auto;
+  padding: 20px;
+  color: rgb(49, 49, 46);
+  min-height: 70vh;
+}
+
+.footer {
+  width: auto;
+  display: flex;
+  height: 90px;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(148, 172, 13);
+}
+
+.footer p{
+  color: rgb(247, 247, 198);
+}
+
+.login, .register {
+  width: 80%;
+}
+
+.checkbox-top, .checkbox-bottom {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 20px 0;
+}
+
+.profileInformation {
+  width: 50%;
+}
+
+.profileInformation li {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.delete-button {
+  background-color: white;
+  color: crimson;
+}
+
+.delete-button:hover {
+  animation: delete-button-animation 300ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes delete-button-animation{
+  0% {
+    background-color: white;
+    color: crimson;
+  }
+  100% {
+    background-color: crimson;
+    color: white;
+  }
 }

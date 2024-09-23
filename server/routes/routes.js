@@ -14,5 +14,6 @@ router.post('/ownerNumber', controller.ownerNumber);
 router.post('/removeDates', controller.removeDates);
 router.get('/apartments', controller.locateApartments);
 router.get('/availability', controller.fetchAvailability);
+router.delete('/delete', controller.deleteApartment);
 
 module.exports = router;

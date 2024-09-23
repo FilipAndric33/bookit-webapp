@@ -8,6 +8,7 @@ import Profile from './components/Profile';
 import Add from './components/Add';
 import ApartmentDetails from './components/ApartmentDetails';
 import SearchBar from './components/SearchBar';
+import Footer from './components/Footer';
 import { useState } from 'react';
 
 
@@ -34,6 +35,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
         </div>
+        <Footer />
       </div>
     </Router>
   )
