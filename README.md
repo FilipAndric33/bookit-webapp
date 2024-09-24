@@ -24,7 +24,7 @@ JsonWebToken for user authentification and authorization.
 
 ### Prerequisites
 
-Node.js and npm installed.
+Node.js, npm and nodemon installed.
 MongoDB cluster set up and running.
 
 ### Installation
@@ -52,15 +52,6 @@ The application will be running on localhost:3000.
 
 ## Usage
 
-### Browsing apartments
-
-On the initial home page there are apartments that can be browsed. Click on the view button to see the details.
-
-### Making reservations 
-
-By clicking view, there is a date picker callendar on which you can pick either one date or multiple dates in a row.
-The total price is written above. The starting price is one day rental price.
-
 ### Registration and log in
 
 By opening the register form you can create an account. After account creation you can press the login option in 
@@ -70,3 +61,12 @@ the navbar which will lead to a second form. By typing in the username and passw
 
 in the navbar there is an option to view profile info. After opening you will have a button that leads to the 
 appartment adding form. The same can be done directly from the navbar after logging in. 
+
+### Browsing apartments
+
+On the initial home page there are apartments that can be browsed. Initially the home page will be empty. After adding apartments click on the view button to see the details.
+
+### Making reservations 
+
+By clicking view, there is a date picker callendar on which you can pick either one date or multiple dates in a row.
+The total price is written above. The starting price is one day rental price.
